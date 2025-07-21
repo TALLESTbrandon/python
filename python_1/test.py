@@ -1,8 +1,11 @@
 import random
+
+# this is my list
+
 countries =[
   {"name":"France","continent": "Europe"},
   {"name":"United States of America","continent": "North America"},
-  {"name":"England","continent": "Europe"},
+  {"name":"England","continent": "Europe"}, 
   {"name":"Germany","continent": "Europe"},
   {"name":"Guatemala","continent": "Central America"},
   {"name":"Mexico","continent": "North America"},
@@ -14,16 +17,23 @@ countries =[
   {"name":"India","continent": "Asia"},
   {"name":"Canada","continent": "North America",}
   ]
+
+# theses are my variables
 secret =  random.choice(countries)
 print("I'm thinking of a country. Try and guess which one!")
 print(f"Hint: It's in {secret['continent']}")
 print(f"Hint: It starts with the letter '{secret['name'][0]}'")
 guess = ""
 tries = 0
+
+# while tru loop
+
 while guess != secret:
     guess = input("Your guess: ").strip().title()
     tries += 1
-    print("Not quite, try again tho.")    
+#. this is the logical statements
 if guess == secret:
     print(f" Nice job you got it! It was {secret}. You got it in {tries} tries.")
+else:
+    print("Not quite, try again tho.")    
    
