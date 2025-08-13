@@ -1,9 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://dv7vpabwe3bt3"]
+[gd_scene load_steps=20 format=3 uid="uid://dv7vpabwe3bt3"]
 
 [ext_resource type="Script" uid="uid://ctjpuowwath71" path="res://scripts/main_game_scene.gd" id="1_it2yt"]
 [ext_resource type="Texture2D" uid="uid://dklpn7035wjva" path="res://player/RiverPlate/idle.png" id="2_d383n"]
 [ext_resource type="Texture2D" uid="uid://d4iijqb0tut1a" path="res://player/BocaJuniors/back.png" id="2_qsd30"]
 [ext_resource type="Texture2D" uid="uid://bv21ra30nonrj" path="res://player/Balls.png" id="3_oa6bs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oa6bs"]
+size = Vector2(15, 141)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_emqn2"]
+size = Vector2(13, 141)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ilxj7"]
+size = Vector2(550, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_snln7"]
 atlas = ExtResource("2_d383n")
@@ -108,16 +117,34 @@ offset_left = 150.0
 offset_right = 162.0
 offset_bottom = 140.0
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Goal/PostLeft"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal/PostLeft/StaticBody2D"]
+position = Vector2(6, 70)
+shape = SubResource("RectangleShape2D_oa6bs")
+
 [node name="PostRight" type="ColorRect" parent="Goal"]
 offset_left = 700.0
 offset_right = 712.0
 offset_bottom = 140.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Goal/PostRight"]
+position = Vector2(6.5, 69.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal/PostRight/StaticBody2D"]
+shape = SubResource("RectangleShape2D_emqn2")
 
 [node name="Crossbar" type="ColorRect" parent="Goal"]
 offset_left = 153.0
 offset_top = -1.0
 offset_right = 703.0
 offset_bottom = 11.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Goal/Crossbar"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal/Crossbar/StaticBody2D"]
+position = Vector2(276, 6)
+shape = SubResource("RectangleShape2D_ilxj7")
 
 [node name="Enemy goal" type="ColorRect" parent="."]
 offset_left = 400.0
@@ -172,3 +199,15 @@ text = "2: Middle"
 [node name="ButtonRight" type="Button" parent="UI/Layout"]
 layout_mode = 2
 text = "3: Right"
+
+[node name="ScoreLabel" type="Label" parent="UI/Layout"]
+layout_mode = 2
+text = "Score: 0 "
+
+[node name="MissesLabel" type="Label" parent="UI/Layout"]
+layout_mode = 2
+text = "Misses: 0 "
+
+[node name="TriesLabel" type="Label" parent="UI/Layout"]
+layout_mode = 2
+text = "Tries: 0 / 3"
